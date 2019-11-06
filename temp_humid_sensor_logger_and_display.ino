@@ -29,6 +29,8 @@
 	#error("Height incorrect, please fix Adafruit_SSD1306.h!");
 #endif
 
+//////////////////////////////////////////////////////////////////////////////////
+
 // DHT22 setup
 #define DHTPIN D6
 #define DHTTYPE DHT22
@@ -50,6 +52,8 @@ DHT dht(DHTPIN, DHTTYPE);
 Adafruit_SSD1306 display(OLED_RESET);
 
 void connectToWiFi(const char* ssid, const char* password){
+  // This mode help with the wifi disconnection problems
+  WiFi.setSleepMode(WIFI_NONE_SLEEP);
   WiFi.begin(ssid, password);
   
   while (WiFi.status() != WL_CONNECTED) {
